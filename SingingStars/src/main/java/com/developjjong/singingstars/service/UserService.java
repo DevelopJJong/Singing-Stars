@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -21,16 +22,16 @@ public class UserService {
         siteUser.setEmail(email);
         siteUser.setNickname(nickname);
         siteUser.setPassword(passwordEncoder.encode(password));
-
+        siteUser.setCreated_at(LocalDateTime.now());
         return userRepository.save(siteUser);
     }
 
-    public SiteUser getUser(String nickname){
-        Optional<SiteUser> user = userRepository.findByNickname(nickname);
+    public SiteUser getUser(String email){
+        Optional<SiteUser> user = userRepository.findByEmail(email);
         if (user.isPresent()){
             return user.get();
         } else {
-            throw new DataNotFoundException("user not found");
+            throw new DataNotFoundException("Nickname is not found");
         }
     }
 }

@@ -1,0 +1,99 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Alkalami.css">
+    <link rel="stylesheet" href="/assets/css/Archivo%20Black.css">
+    <link rel="stylesheet" href="/assets/css/Bebas%20Neue.css">
+    <link rel="stylesheet" href="/assets/css/Blinker.css">
+    <link rel="stylesheet" href="/assets/css/Open%20Sans.css">
+    <link rel="stylesheet" href="/assets/css/Articles-Badges-images.css">
+    <link rel="stylesheet" href="/assets/css/Navbar-Centered-Brand-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+
+<!--<div layout:fragment="content" class="container my-3">-->
+<!--    <form th:action="@{/user/login}" method="post">-->
+<!--        <div th:if="${param.error}">-->
+<!--            <div class="alert alert-danger">-->
+<!--                이메일 또는 비밀번호를 확인해 주세요.-->
+<!--            </div>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label for="email" class="form-label">이메일</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" name="username" id="email" class="form-control" onkeyup="this.value=this.value.toLowerCase();">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label for="password" class="form-label">비밀번호</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="password" name="password" id="password" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <button type="submit" class="btn btn-primary">로그인</button>-->
+<!--    </form>-->
+<!--</div>-->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<nav th:replace="~{navbar :: navbarFragment}"></nav>
+
+<div class="login container" style="margin-top:-5rem" layout:fragment="content">
+    <div class="login__content">
+        <div class="login__img">
+            <img src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg" alt="user login">
+        </div>
+
+        <div class="login__forms">
+            <!--         login form -->
+            <form th:action="@{/user/login}" method="post" class="login__register" id="login-in">
+                <h1 class="login__title">로그인</h1>
+                <div class="login__box">
+<!--                    <i class='bx bx-user login__icon'></i>-->
+                    <label for="email-input" class='bx bx-user login__icon'></label>
+                    <input type="email" placeholder="Email" class="login__input" name="username" id="email-input" onkeyup="this.value=this.value.toLowerCase();">
+                </div>
+                <div class="login__box">
+                    <label for="password-input" class='bx bx-lock login__icon'></label>
+                    <input type="password" name="password" id="password-input" placeholder="Password" class="login__input">
+                </div>
+                <a href="#" class="login__forgot">비밀번호 찾기</a>
+                <br>
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        이메일 또는 비밀번호를 확인해 주세요.
+                    </div>
+                </div>
+               <button type="submit" class="login__button">로그인</button>
+                <div>
+                    <span class="login__account login__account--account">아이디가 없으신가요?</span>
+                    <span onclick="location.href='/user/signup'" class="login__signin login__signin--signup" id="sign-up">회원가입</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{footer :: footerFragment}"></footer>
+
+</html>
+<script>
+    const signup = document.getElementById("sign-up");
+    signin = document.getElementById("sign-in");
+    loginin = document.getElementById("login-in");
+    loginup = document.getElementById("login-up");
+
+    signup.addEventListener("click", () => {
+        loginin.classList.remove("block");
+        loginup.classList.remove("none");
+
+        loginin.classList.add("none");
+        loginup.classList.add("block");
+    })
+
+    signin.addEventListener("click", () => {
+        loginin.classList.remove("none");
+        loginup.classList.remove("block");
+
+        loginin.classList.add("block");
+        loginup.classList.add("none");
+    })
+</script>

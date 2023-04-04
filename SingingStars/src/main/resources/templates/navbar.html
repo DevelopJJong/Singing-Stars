@@ -1,0 +1,27 @@
+
+<nav id="mainNav" class="navbar navbar-dark navbar-expand-lg border-bottom" style="background: #1C2143" th:fragment="navbarFragment">
+    <style>
+        .nav-link{
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+    <div class="container-fluid" style="margin-left: 10px; margin-right: 10px;">
+        <a class="navbar-brand" href="/"><img src="/assets/images/SingingStarBrand.svg" alt = "brand"></a>
+        <div id="navcol-2" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto text-uppercase">
+                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="/singup/list">노래 업로드</a></li>
+                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#portfolio">듀엣 찾기</a></li>
+                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#about">연습 팁</a></li>
+                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#team">커뮤니티</a></li>
+                <li class="nav-item" style="margin-right: 20px;">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="isAnonymous()" href="/user/signup">회원가입</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

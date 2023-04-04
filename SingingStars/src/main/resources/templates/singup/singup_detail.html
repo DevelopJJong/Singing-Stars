@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container">
+    <table class="table">
+        <thead class="table-dark">
+        <tr class="text-center">
+            <th style="width:50%">제목</th>
+            <th>내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="question, loop : ${question}">
+            <td th:text="${question.title}"></td>
+            <td th:text="${question.content}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
+       th:data-uri="@{|/singup/vote/${question.id}|}">
+        추천
+        <span class="badge rounded-pill bg-success" th:text="${#lists.size(question.voter)}"></span>
+    </a>
+    <div class="my-3">
+        <a th:href="@{|/singup/update/${question.id}|}" class="btn btn-sm btn-outline-secondary"
+           sec:authorize="isAuthenticated()"
+           th:if="${question.siteUser != null and #authentication.getPrincipal().getUsername() == question.siteUser.email}"
+           th:text="수정"></a>
+    </div>
+    <div class="my-3">
+        <a href="javascript:void(0);" th:data-uri="@{|/singup/delete/${question.id}|}"
+           class="delete btn btn-sm btn-outline-secondary"
+           sec:authorize="isAuthenticated()"
+           th:if="${question.siteUser != null and #authentication.getPrincipal().getUsername() == question.siteUser.email}"
+           th:text="삭제"></a>
+    </div>
+    <div>
+    <h5 th:text="|${#lists.size(question.commentList)}개의 답변이 있습니다.|"></h5>
+    <div>
+        <ul>
+            <li th:each="comment : ${question.commentList}" th:text="${comment.content}"><</li>
 
-</body>
+        </ul>
+    </div>
+    </div>
+    <!-- 답변 작성 -->
+    <form th:action="@{|/comment/create/${question.id}|}" th:object="${commentForm}" method="post">
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+        <textarea name="content" id="content" rows="15"></textarea>
+        <input type="submit" value="답변등록">
+    </form>
+</div>
+<script layout:fragment="script" type='text/javascript'>
+    const delete_elements = document.getElementsByClassName("delete");
+    Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
+    });
+    const recommend_elements = document.getElementsByClassName("recommend");
+    Array.from(recommend_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("정말로 추천하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
+    });
+</script>
 </html>

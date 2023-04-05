@@ -2,29 +2,40 @@
 
 <div layout:fragment="content" class="container">
     <h2 class="text-center">노래</h2>
-    <table class="table table-hover table-bordered">
+
+        <table class="table table-hover table-bordered">
         <thead class="table" style="background-color: #1C2143;">
         <tr class="text-center text-white">
             <th style="width:50%">제목</th>
             <th>작성자</th>
+            <th>조회수</th>
             <th>작성일자</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="question, loop : ${questionList}">
             <td><a class="text-black fw-bold"  th:href="@{|/singup/detail/${question.id}|}" style="text-decoration: none; " th:text="${question.title}"></a>
-                <span class="text-danger small ms-2"
+                <span class="text-danger small ms-2 "
                       th:if="${#lists.size(question.commentList) > 0}"
                       th:text="|댓글 ${#lists.size(question.commentList)}|">
                     </span>
+                <span class="text-danger small ms-2"
+                      th:if="${#lists.size(question.voter) > 0}"
+                      th:text="|좋아요 ${#lists.size(question.voter)}|">
+                    </span>
             </td>
-
             <td class="text-center" th:text="${question.nickname}"></td>
+            <td class="text-center" th:text="${question.view}"></td>
             <td class="text-center" th:text="${#temporals.format(question.created_at, 'yyyy.MM.dd.')}"></td>
+
+
 
         </tr>
         </tbody>
     </table>
+    <div style="text-align:right">
+        <a  th:href="@{/singup/create}" class="btn btn-outline-dark">글쓰기</a>
+    </div>
     <!-- 페이징처리 시작 -->
     <div th:if="${!questionList.isEmpty()}">
         <ul class="pagination pagination-sm justify-content-center pagination-rounded">
@@ -48,6 +59,5 @@
         </ul>
     </div>
     <!-- 페이징처리 끝 -->
-    <a th:href="@{/singup/create}" class="btn btn-outline-dark">글쓰기</a>
 </div>
 </html>

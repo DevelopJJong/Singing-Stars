@@ -28,7 +28,7 @@
     <div class="my-3">
         <a href="javascript:void(0);" th:data-uri="@{|/singup/delete/${question.id}|}"
            class="delete btn btn-sm btn-outline-secondary"
-           sec:authorize="isAuthenticated()"
+           sec:authorize="isAuthenticated() or hasRole('ADMIN')"
            th:if="${question.siteUser != null and #authentication.getPrincipal().getUsername() == question.siteUser.email}"
            th:text="삭제"></a>
     </div>

@@ -6,8 +6,12 @@ import com.developjjong.singingstars.form.CommentForm;
 import com.developjjong.singingstars.form.QuestionForm;
 import com.developjjong.singingstars.service.UserService;
 import com.developjjong.singingstars.service.QuestionService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,6 +28,7 @@ import java.util.List;
 @RequestMapping("/singup")
 @RequiredArgsConstructor
 @Controller
+@Slf4j
 public class SingUpController {
     private final QuestionService questionService;
     private final UserService userService;
@@ -37,7 +42,9 @@ public class SingUpController {
 
     @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable("id") BigInteger id, CommentForm commentForm){
+        questionService.viewCount(id);
         model.addAttribute("question",questionService.detail(id));
+
         return "/singup/singup_detail";
     }
 

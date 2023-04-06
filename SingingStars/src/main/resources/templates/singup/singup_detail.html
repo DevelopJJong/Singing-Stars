@@ -13,26 +13,6 @@
         </div>
                 <div class="bg-white border rounded-5 row-cols-3"  th:text="${question.content}"></div>
 
-                <div style="text-align: left">
-                    <a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
-                       th:data-uri="@{|/singup/vote/${question.id}|}">
-                        추천
-                        <span class="badge rounded-pill bg-success" th:text="${#lists.size(question.voter)}"></span>
-                    </a>
-                    <span class="my-3">
-        <a th:href="@{|/singup/update/${question.id}|}" class="btn btn-sm btn-outline-secondary"
-           sec:authorize="isAuthenticated()"
-           th:if="${question.siteUser != null and #authentication.getPrincipal().getUsername() == question.siteUser.email}"
-           th:text="수정"></a>
-    </span>
-                    <span class="my-3">
-        <a href="javascript:void(0);" th:data-uri="@{|/singup/delete/${question.id}|}"
-           class="delete btn btn-sm btn-outline-secondary"
-           sec:authorize="isAuthenticated() or hasRole('ADMIN')"
-           th:if="${question.siteUser != null and #authentication.getPrincipal().getUsername() == question.siteUser.email}"
-           th:text="삭제"></a>
-    </span>
-                </div>
         </div>
         </div>
 

@@ -28,6 +28,11 @@ public class Comment {
     @ManyToOne
     private SiteUser siteUser;
 
+    public String getNickname(){
+        return this.siteUser.getNickname();
+    }
+
+
     @ManyToMany
     Set<SiteUser> voter;
 }

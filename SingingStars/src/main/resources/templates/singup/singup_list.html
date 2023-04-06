@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         <tr th:each="question, loop : ${questionList}">
-            <td><a class="text-black fw-bold"  th:href="@{|/singup/detail/${question.id}|}" style="text-decoration: none; " th:text="${question.title}"></a>
+            <td><a class="text-black fw-bold"  th:href="@{|/detail/${question.id}|}" style="text-decoration: none; " th:text="${question.title}"></a>
                 <span class="text-danger small ms-2 "
                       th:if="${#lists.size(question.commentList) > 0}"
                       th:text="|댓글 ${#lists.size(question.commentList)}|">
@@ -33,6 +33,7 @@
         </tr>
         </tbody>
     </table>
+
     <div style="text-align:right">
         <a  th:href="@{/singup/create}" class="btn btn-outline-dark">글쓰기</a>
     </div>

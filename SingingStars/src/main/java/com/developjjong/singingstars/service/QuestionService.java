@@ -78,7 +78,17 @@ public class QuestionService {
     }
 
     public void vote(Question question, SiteUser siteUser) {
-        question.getVoter().add(siteUser);
+        if (question.getVoter().contains(siteUser)) {
+            question.getVoter().remove(siteUser);
+        }
+        else {
+            question.getVoter().add(siteUser);
+        }
+        this.questionRepository.save(question);
+    }
+
+    public void devote(Question question, SiteUser siteUser){
+        question.getVoter().remove(siteUser);
         this.questionRepository.save(question);
     }
 

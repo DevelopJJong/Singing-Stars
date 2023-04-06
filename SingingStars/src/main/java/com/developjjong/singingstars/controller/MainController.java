@@ -45,7 +45,7 @@ public class MainController {
         questionService.viewCount(id);
         model.addAttribute("question",questionService.detail(id));
 
-        return "/announce_detail";
+        return "/singup/singup_detail";
     }
 
     @PreAuthorize("isAuthenticated()")

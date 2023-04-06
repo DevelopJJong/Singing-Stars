@@ -8,12 +8,25 @@
     </style>
     <div class="container-fluid" style="margin-left: 10px; margin-right: 10px;">
         <a class="navbar-brand" href="/"><img src="/assets/images/SingingStarBrand.svg" alt = "brand"></a>
+        <div class=" bg-gray-200">
+            <div class="container h-screen flex justify-center items-center">
+                <div class="relative">
+                    <div class="absolute top-4 left-3">
+                        <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+                    </div>
+                    <input type="text" class="h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search anything...">
+                    <div class="absolute top-2 right-2">
+                        <button class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="navcol-2" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto text-uppercase">
                 <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="/list">공지사항</a></li>
                 <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="/singup/list">노래 업로드</a></li>
-                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#portfolio">듀엣 찾기</a></li>
-                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#about">연습 팁</a></li>
+                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="/duet/list">듀엣 찾기</a></li>
+                <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="/practice/list">연습 Tip</a></li>
                 <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#team">커뮤니티</a></li>
                 <li class="nav-item" style="margin-right: 20px;">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>

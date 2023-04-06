@@ -73,7 +73,7 @@ public class SingUpController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
         this.questionService.update(question, questionForm.getSubject(), questionForm.getContent());
-        return String.format("redirect:/singup/detail/%s", id);
+        return String.format("redirect:/detail/%s", id);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -113,7 +113,7 @@ public class SingUpController {
         Question question = this.questionService.getQuestion(id);
         SiteUser siteUser = this.userService.getUser(principal.getName());
         this.questionService.vote(question, siteUser);
-        return String.format("redirect:/singup/detail/%s", id);
+        return String.format("redirect:/detail/%s", id);
     }
 
 }

@@ -13,7 +13,7 @@ public class UserCreateForm {
     @Email
     private String email;
 
-    @Size(min = 3, max = 25)
+    @Size(min = 3, max = 25, message = "닉네임은 3글자에서 25글자 사이여야 합니다.")
     @NotEmpty(message = "닉네임은 필수항목입니다.")
     private String nickname;
 

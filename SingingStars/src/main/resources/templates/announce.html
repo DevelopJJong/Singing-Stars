@@ -22,9 +22,9 @@
                       th:text="|좋아요 ${#lists.size(question.voter)}|">
                     </span>
             </td>
-            <td class="text-center" th:text="${question.nickname}"></td>
-            <td class="text-center" th:text="${question.view}"></td>
-            <td class="text-center" th:text="${#temporals.format(question.created, 'yyyy.MM.dd.')}"></td>
+            <td class="text-center align-middle" th:text="${question.nickname}"></td>
+            <td class="text-center align-middle" th:text="${question.view}"></td>
+            <td class="text-center align-middle" th:text="${#temporals.format(question.created, 'yyyy.MM.dd.')}"></td>
 
 
 

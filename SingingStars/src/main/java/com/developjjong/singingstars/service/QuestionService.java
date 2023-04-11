@@ -74,53 +74,6 @@ public class QuestionService {
         return questionRepository.findByTypeOrderByVoterDesc(type, pageable);
     }
 
-//    public Page<Question> test(int page){
-//        Pageable pageable = PageRequest.of(page,10);
-//        return questionRepository.findByPage(pageable);
-//    }
-//    public Page<Question> findByTypeOrderByCreated_atDesc(String type, int page) {
-//        List<Sort.Order> sorts = new ArrayList<>();
-//        sorts.add(Sort.Order.desc("created_at"));
-//        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-//        return questionRepository.findByType(type, pageable);
-//    }
-
-//    public Page<Question> findByType(String type, int page, Sort sort) {
-//        sort.ascending();
-//        Pageable pageable = PageRequest.of(page, 10);
-//        return questionRepository.findByType(type, pageable);
-//    }
-
-//    public Page<Question> findByType2(String type, int page, String nickname) {
-//        Pageable pageable = PageRequest.of(page, 10);
-//        return questionRepository.findByType(type, pageable);
-//    }
-//
-//    public Page<Question> findByType2(String type, String nickname, int page) {
-//        Sort sort1 = Sort.by("nickname");
-//        Pageable pageable = PageRequest.of(page, 10, sort1);
-//        return questionRepository.findByType(type, pageable);
-//    }
-
-
-//    public Page<Question> findByTypeAndSortById(String type, int page, BigInteger id) {
-//        Sort sort = Sort.by("id").ascending();
-//        Pageable pageable = PageRequest.of(page, 10, sort);
-//        return questionRepository.findByTypeAndSortById(type, pageable, id);
-//    }
-//
-//    public Page<Question> findByTypeAndNickname(String type, int page, String nickname) {
-//        Pageable pageable = PageRequest.of(page, 10, Sort.by("nickname").ascending());
-//        return questionRepository.findByTypeAndSortByNickname(type, nickname, pageable);
-//    }
-
-
-//    public Page<Question> getList(int page) {
-//        List<Sort.Order> sorts = new ArrayList<>();
-//        sorts.add(Sort.Order.desc("type"));
-//        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-//        return this.questionRepository.findAll(pageable);
-//    }
     public void delete(BigInteger id){
         questionRepository.deleteById(id);
     }

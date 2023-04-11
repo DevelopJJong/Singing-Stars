@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class QuestionForm {
     @NotEmpty(message="제목은 필수항목입니다.")
-    @Size(max=50)
+    @Size(max=50, message = "50글자 이하여야 합니다.")
     private String subject;
 
     @NotEmpty(message="내용은 필수항목입니다.")

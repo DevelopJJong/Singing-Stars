@@ -14,7 +14,7 @@
                 <a><small class="text-muted" th:text="|좋아요 ${#lists.size(question.voter)}|"></small></a>
             </p>
         </div>
-                <div class="border-top my-3 py-2 row-cols-3"  th:text="${question.content}"></div>
+                <div class="border-top my-3 py-2 row-cols-3 text-break"  th:text="${question.content}"></div>
 
         </div>
         </div>
@@ -41,5 +41,6 @@
             };
         });
     });
+
 </script>
 </html>

@@ -17,16 +17,19 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    @Column(length=225)
+    @Column(length=225, nullable = false)
     private String title;
 
     @Column(length=500)
     private String content;
 
-    private LocalDateTime created_at;
+    @Column(nullable = false)
+    private LocalDateTime created;
 
+    @Column(nullable = false)
     private LocalDateTime modified_at;
 
+    @Column(nullable = false)
     private String type;
 
     @Column(columnDefinition = "integer default 0", nullable = false)

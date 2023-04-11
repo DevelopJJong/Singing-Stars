@@ -48,13 +48,13 @@ public class MainController {
         return "/singup/singup_detail";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/create")
     public String create(QuestionForm questionForm){
         return "create";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public String create(@Valid QuestionForm questionForm,
                          BindingResult bindingResult, Principal principal) {

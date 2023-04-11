@@ -1,6 +1,6 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container">
-    <h2 class="text-center">공지사항</h2>
+    <h2 class="text-center my-3 py-2">공지사항</h2>
     <table class="table table-hover table-bordered">
         <thead class="table" style="background-color: #1C2143;">
         <tr class="text-center text-white">
@@ -24,7 +24,7 @@
             </td>
             <td class="text-center" th:text="${question.nickname}"></td>
             <td class="text-center" th:text="${question.view}"></td>
-            <td class="text-center" th:text="${#temporals.format(question.created_at, 'yyyy.MM.dd.')}"></td>
+            <td class="text-center" th:text="${#temporals.format(question.created, 'yyyy.MM.dd.')}"></td>
 
 
 
@@ -32,7 +32,8 @@
         </tbody>
     </table>
     <div style="text-align:right">
-        <a  th:href="@{/create}" class="btn btn-outline-dark">글쓰기</a>
+        <a th:href="@{/create}" class="btn btn-outline-dark"
+           sec:authorize="hasRole('ADMIN')">글쓰기</a>
     </div>
     <!-- 페이징처리 시작 -->
     <div th:if="${!questionList.isEmpty()}">

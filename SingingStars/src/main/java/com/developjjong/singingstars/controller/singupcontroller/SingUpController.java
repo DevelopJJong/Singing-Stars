@@ -13,6 +13,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -39,6 +42,21 @@ public class SingUpController {
         model.addAttribute("questionList", questionList);
         return "/singup/singup_list";
     }
+
+    @GetMapping("/view")
+    public String view(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByView("singup", page);
+        model.addAttribute("questionList", questionList);
+        return "/singup/singup_list";
+    }
+
+    @GetMapping("/vote")
+    public String voter(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByVote("singup", page);
+        model.addAttribute("questionList", questionList);
+        return "/singup/singup_list";
+    }
+
 
     @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable("id") BigInteger id, CommentForm commentForm){

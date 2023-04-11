@@ -8,13 +8,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +49,7 @@ public class QuestionService {
         s.setType(type);
         s.setTitle(title);
         s.setContent(content);
-        s.setCreated_at(LocalDateTime.now());
+        s.setCreated(LocalDateTime.now());
         s.setSiteUser(siteUser);
         this.questionRepository.save(s);
     }
@@ -64,15 +62,65 @@ public class QuestionService {
     }
     public Page<Question> findByType(String type, int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        return questionRepository.findByType(type, pageable);
+        return questionRepository.findByTypeOrderByCreatedDesc(type, pageable);
+    }
+    public Page<Question> findByTypeOrderByView(String type, int page){
+        Pageable pageable = PageRequest.of(page, 10);
+        return questionRepository.findByTypeOrderByViewDesc(type, pageable);
     }
 
-    public Page<Question> getList(int page) {
-        List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("created_at"));
-        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return this.questionRepository.findAll(pageable);
+    public Page<Question> findByTypeOrderByVote(String type, int page){
+        Pageable pageable = PageRequest.of(page, 10);
+        return questionRepository.findByTypeOrderByVoterDesc(type, pageable);
     }
+
+//    public Page<Question> test(int page){
+//        Pageable pageable = PageRequest.of(page,10);
+//        return questionRepository.findByPage(pageable);
+//    }
+//    public Page<Question> findByTypeOrderByCreated_atDesc(String type, int page) {
+//        List<Sort.Order> sorts = new ArrayList<>();
+//        sorts.add(Sort.Order.desc("created_at"));
+//        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+//        return questionRepository.findByType(type, pageable);
+//    }
+
+//    public Page<Question> findByType(String type, int page, Sort sort) {
+//        sort.ascending();
+//        Pageable pageable = PageRequest.of(page, 10);
+//        return questionRepository.findByType(type, pageable);
+//    }
+
+//    public Page<Question> findByType2(String type, int page, String nickname) {
+//        Pageable pageable = PageRequest.of(page, 10);
+//        return questionRepository.findByType(type, pageable);
+//    }
+//
+//    public Page<Question> findByType2(String type, String nickname, int page) {
+//        Sort sort1 = Sort.by("nickname");
+//        Pageable pageable = PageRequest.of(page, 10, sort1);
+//        return questionRepository.findByType(type, pageable);
+//    }
+
+
+//    public Page<Question> findByTypeAndSortById(String type, int page, BigInteger id) {
+//        Sort sort = Sort.by("id").ascending();
+//        Pageable pageable = PageRequest.of(page, 10, sort);
+//        return questionRepository.findByTypeAndSortById(type, pageable, id);
+//    }
+//
+//    public Page<Question> findByTypeAndNickname(String type, int page, String nickname) {
+//        Pageable pageable = PageRequest.of(page, 10, Sort.by("nickname").ascending());
+//        return questionRepository.findByTypeAndSortByNickname(type, nickname, pageable);
+//    }
+
+
+//    public Page<Question> getList(int page) {
+//        List<Sort.Order> sorts = new ArrayList<>();
+//        sorts.add(Sort.Order.desc("type"));
+//        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+//        return this.questionRepository.findAll(pageable);
+//    }
     public void delete(BigInteger id){
         questionRepository.deleteById(id);
     }
@@ -91,6 +139,11 @@ public class QuestionService {
         question.getVoter().remove(siteUser);
         this.questionRepository.save(question);
     }
+
+//    public Page<Question> findByTypeSortById(String type, int page, BigInteger id) {
+//        Pageable pageable = PageRequest.of(page, 10, Sort.by("id").ascending());
+//        return questionRepository.findByType(type, pageable);
+//    }
 
     @Transactional
     public int viewCount(BigInteger id){

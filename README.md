@@ -1,4 +1,4 @@
-# Singing-Stars
+# Singing-Stars (작성중)
 
 ## Introduce
 ### 너의 노래실력을 들려줘!

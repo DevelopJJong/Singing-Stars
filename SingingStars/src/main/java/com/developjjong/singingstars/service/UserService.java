@@ -34,4 +34,5 @@ public class UserService {
             throw new DataNotFoundException("Nickname is not found");
         }
     }
+
 }

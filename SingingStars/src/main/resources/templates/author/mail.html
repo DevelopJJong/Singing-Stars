@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Mail</title>
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
+</head>
+<body>
+<h1>메일 보내기</h1>
+
+<div id="mail_input" name="mail_input">
+  <input type="email" name="mail" id="mail" placeholder="이메일 입력">
+  <button type="button" id="sendBtn" name="sendBtn" onclick="sendNumber()">인증번호</button>
+</div>
+<br>
+<div id="mail_number" name="mail_number" style="display: none">
+  <input type="text" name="number" id="number" placeholder="인증번호 입력">
+  <button type="button" name="confirmBtn" id="confirmBtn" onclick="confirmNumber()">이메일 인증</button>
+</div>
+<br>
+<input type="text" id="Confirm" name="Confirm" style="display: none" value="">
+</body>
+<script
+        src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+  var token = $("meta[name='_csrf']").attr("content");
+  var header = $("meta[name='_csrf_header']").attr("content");
+  $(function() {
+    $(document).ajaxSend(function(e, xhr, options) {
+      xhr.setRequestHeader(header, token);
+    });
+  });
+
+  function sendNumber(){
+    var emailInput = document.getElementById("mail");
+    var email = emailInput.value;
+
+    if (email === "") {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
+    // 이메일 형식인지 확인
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      alert("이메일 형식이 올바르지 않습니다.");
+      return;
+    }
+    $("#mail_number").css("display","block");
+    $.ajax({
+      url:"/mail/send",
+      type:"post",
+      dataType:"json",
+      data:{"mail" : $("#mail").val()},
+      success: function(data){
+        alert("인증번호 발송");
+        $("#Confirm").attr("value",data);
+      }
+    });
+  }
+
+  function confirmNumber(){
+    var number1 = $("#number").val();
+    var number2 = $("#Confirm").val();
+
+    if(number1 == number2){
+      alert("인증되었습니다.");
+    }else{
+      alert("번호가 다릅니다.");
+    }
+  }
+</script>
+</html>

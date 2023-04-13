@@ -1,4 +1,4 @@
-package com.developjjong.singingstars.controller.singupcontroller;
+package com.developjjong.singingstars.controller;
 
 import com.developjjong.singingstars.domain.Comment;
 import com.developjjong.singingstars.domain.Question;

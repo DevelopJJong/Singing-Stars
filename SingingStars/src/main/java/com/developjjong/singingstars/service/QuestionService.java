@@ -73,6 +73,10 @@ public class QuestionService {
         Pageable pageable = PageRequest.of(page, 10);
         return questionRepository.findByTypeOrderByVoterDesc(type, pageable);
     }
+    public Page<Question> findByTypeOrderByComments(String type, int page){
+        Pageable pageable = PageRequest.of(page, 10);
+        return questionRepository.findByTypeOrderByCommentListDesc(type, pageable);
+    }
 
     public void delete(BigInteger id){
         questionRepository.deleteById(id);

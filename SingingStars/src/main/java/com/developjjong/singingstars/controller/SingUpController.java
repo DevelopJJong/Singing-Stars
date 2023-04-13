@@ -1,4 +1,4 @@
-package com.developjjong.singingstars.controller.singupcontroller;
+package com.developjjong.singingstars.controller;
 
 import com.developjjong.singingstars.domain.Question;
 import com.developjjong.singingstars.domain.SiteUser;
@@ -53,6 +53,12 @@ public class SingUpController {
     @GetMapping("/vote")
     public String voter(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Question> questionList = questionService.findByTypeOrderByVote("singup", page);
+        model.addAttribute("questionList", questionList);
+        return "/singup/singup_list";
+    }
+    @GetMapping("/comments")
+    public String comments(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByComments("singup", page);
         model.addAttribute("questionList", questionList);
         return "/singup/singup_list";
     }

@@ -39,7 +39,7 @@ public class UserController {
                     userCreateForm.getPassword1(), userCreateForm.getNickname());
         }catch(DataIntegrityViolationException e) {
             e.printStackTrace();
-            bindingResult.reject("signupFailed", "이미 등록된 이메일입니다.");
+            bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
             return "/author/signup";
         }catch(Exception e) {
             e.printStackTrace();
@@ -54,4 +54,6 @@ public class UserController {
     public String login() {
         return "/author/login";
     }
+
+
 }

@@ -2,7 +2,6 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <head>
         <title>Singing Stars</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="/assets/css/login.css">
@@ -16,12 +15,13 @@
         <link rel="stylesheet" href="/assets/css/Navbar-Centered-Brand-icons.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    </head>
+        <meta name="_csrf" th:content="${_csrf.token}">
+        <meta name="_csrf_header" th:content="${_csrf.headerName}">
 </head>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <nav th:replace="~{navbar :: navbarFragment}"></nav>
 
-<div class="login container" style="margin-top:-5rem" layout:fragment="content">
+<div class="login container" style="margin-top:-5rem;" layout:fragment="content">
     <div class="login__content">
         <div class="login__img">
             <img src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg" alt="user login">
@@ -34,7 +34,12 @@
                     <label for="signup-email-input" class='bx bx-at login__icon'></label>
                     <input type="email" th:field="*{email}" id="signup-email-input" placeholder="Email" class="login__input">
                 </div>
-
+                <button class ="login__button my-3 text-center" type="button" id="sendBtn" name="sendBtn" onclick="sendNumber()">인증번호 전송</button>
+                <div class="login__box" id="mail_number" name="mail_number" style="display: none">
+                    <input class="login__input"  type="text" name="number" id="number" placeholder="인증번호 입력">
+                </div>
+                <button style="display: none" class="login__button my-3 text-center" type="button" name="confirmBtn" id="confirmBtn" onclick="confirmNumber()">이메일 인증</button>
+                <input type="text" id="Confirm" name="Confirm" style="display: none" value="">
                 <div class="login__box">
                     <label for="nickname-input" class='bx bx-user login__icon'></label>
                     <input type="text" th:field="*{nickname}" placeholder="Nickname" id="nickname-input" class="login__input">
@@ -51,7 +56,7 @@
                 </div>
                 <br>
                 <div th:replace="~{form_errors :: formErrorsFragment}"></div>
-                <button type="submit" class="login__button">회원가입</button>
+                <button type="submit" class="login__button" id="signupBtn" disabled>회원가입</button>
 
                 <div>
                     <span class="login__account login__account--account">아이디가 있으신가요? </span>
@@ -71,7 +76,18 @@
 <footer th:replace="~{footer :: footerFragment}"></footer>
 
 </html>
-<script>
+<script
+        src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(function() {
+        $(document).ajaxSend(function(e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    });
     const signup = document.getElementById("sign-up");
     signin = document.getElementById("sign-in");
     loginin = document.getElementById("login-in");
@@ -92,4 +108,46 @@
         loginin.classList.add("block");
         loginup.classList.add("none");
     })
+    function sendNumber(){
+        var emailInput = document.getElementById("signup-email-input");
+        var email = emailInput.value;
+
+        if (email === "") {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+        // 이메일 형식인지 확인
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            alert("이메일 형식이 올바르지 않습니다.");
+            return;
+        }
+        $("#mail_number").css("display","block");
+        $("#confirmBtn").css("display","inline-block");
+        $.ajax({
+            url:"/mail/send",
+            type:"post",
+            dataType:"json",
+            data:{"email" : $("#signup-email-input").val()},
+            success: function(data){
+                alert("인증번호 발송");
+                $("#Confirm").attr("value",data);
+            }
+        });
+    }
+
+    function confirmNumber(){
+        var number1 = $("#number").val();
+        var number2 = $("#Confirm").val();
+
+        if(number1 == number2){
+            alert("인증되었습니다. 계속해서 회원가입해주세요");
+            $("#mail_number").hide();
+            $("#Confirm").hide();
+            $("#confirmBtn").hide();
+            $("#signupBtn").prop("disabled", false);
+        }else{
+            alert("번호가 다릅니다.");
+        }
+    }
 </script>

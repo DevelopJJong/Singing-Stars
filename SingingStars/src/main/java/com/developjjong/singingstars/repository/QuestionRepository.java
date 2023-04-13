@@ -19,6 +19,7 @@ public interface QuestionRepository extends JpaRepository<Question, BigInteger> 
     Page<Question> findAll(Pageable pageable);
     Page<Question> findByTypeOrderByViewDesc(String type, Pageable pageable);
     Page<Question> findByTypeOrderByVoterDesc(String type, Pageable pageable);
+    Page<Question> findByTypeOrderByCommentListDesc(String type, Pageable pageable);
 
 //    Page<Question> findAll(String type, Pageable pageable, String nickname);
 //    Page<Question> findByType(String type, Pageable pageable, Sort sort);

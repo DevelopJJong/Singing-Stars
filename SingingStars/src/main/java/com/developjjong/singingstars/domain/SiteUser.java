@@ -1,5 +1,6 @@
 package com.developjjong.singingstars.domain;
 
+import com.developjjong.singingstars.type.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,4 +29,7 @@ public class SiteUser {
     private String nickname;
 
     private LocalDateTime created_at;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 }

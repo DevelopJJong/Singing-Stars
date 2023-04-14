@@ -21,6 +21,7 @@ import java.util.Optional;
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
+    private final UserService userService;
 
     public Question getQuestion(BigInteger id){
         Optional<Question> question = this.questionRepository.findById(id);
@@ -30,6 +31,8 @@ public class QuestionService {
             throw new DataNotFoundException("question not found");
         }
     }
+
+
 
     public List<Question> getList(){
         return questionRepository.findAll();
@@ -92,15 +95,6 @@ public class QuestionService {
         this.questionRepository.save(question);
     }
 
-    public void devote(Question question, SiteUser siteUser){
-        question.getVoter().remove(siteUser);
-        this.questionRepository.save(question);
-    }
-
-//    public Page<Question> findByTypeSortById(String type, int page, BigInteger id) {
-//        Pageable pageable = PageRequest.of(page, 10, Sort.by("id").ascending());
-//        return questionRepository.findByType(type, pageable);
-//    }
 
     @Transactional
     public int viewCount(BigInteger id){

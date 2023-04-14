@@ -1,21 +1,29 @@
 package com.developjjong.singingstars.controller;
 
+import com.developjjong.singingstars.DataNotFoundException;
+import com.developjjong.singingstars.domain.Question;
+import com.developjjong.singingstars.domain.SiteUser;
 import com.developjjong.singingstars.form.UserCreateForm;
+import com.developjjong.singingstars.service.CommentService;
+import com.developjjong.singingstars.service.QuestionService;
 import com.developjjong.singingstars.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.math.BigInteger;
 
 @RequestMapping("/user")
 @RequiredArgsConstructor
 @Controller
 public class UserController {
     private final UserService userService;
+    private final QuestionService questionService;
+    private final CommentService commentService;
 
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
@@ -50,10 +58,25 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/findpw")
+    public String findPw(){
+        return "/author/findpw";
+    }
+
+    @PostMapping("/findpw")
+    public String findPw(@RequestParam String email){
+        Boolean result = userService.findPw(email);
+
+        if(result==true) {
+            return "redirect:/user/login";
+        } else {
+            throw new DataNotFoundException("이메일이 존재하지 않거나 틀렸습니다");
+        }
+    }
+
     @GetMapping("/login")
     public String login() {
         return "/author/login";
     }
-
 
 }

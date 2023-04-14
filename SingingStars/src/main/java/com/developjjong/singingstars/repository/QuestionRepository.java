@@ -12,11 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, BigInteger> {
     Page<Question> findByTypeOrderByCreatedDesc(String type, Pageable pageable);
     Page<Question> findAll(Pageable pageable);
+    List<Question> findBySiteUser(BigInteger id);
     Page<Question> findByTypeOrderByViewDesc(String type, Pageable pageable);
     Page<Question> findByTypeOrderByVoterDesc(String type, Pageable pageable);
     Page<Question> findByTypeOrderByCommentListDesc(String type, Pageable pageable);

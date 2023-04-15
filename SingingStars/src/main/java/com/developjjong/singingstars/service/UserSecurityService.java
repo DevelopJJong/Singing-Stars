@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UserSecurityService implements UserDetailsService {
+public class UserSecurityService implements UserDetailsService{
 
     private final UserRepository userRepository;
 

@@ -35,6 +35,26 @@ public class DuetController {
         return "duet";
     }
 
+    @GetMapping("/view")
+    public String view(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByView("duet", page);
+        model.addAttribute("questionList", questionList);
+        return "/duet";
+    }
+
+    @GetMapping("/vote")
+    public String voter(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByVote("duet", page);
+        model.addAttribute("questionList", questionList);
+        return "/duet";
+    }
+    @GetMapping("/comments")
+    public String comments(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByComments("duet", page);
+        model.addAttribute("questionList", questionList);
+        return "/duet";
+    }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String create(QuestionForm questionForm){

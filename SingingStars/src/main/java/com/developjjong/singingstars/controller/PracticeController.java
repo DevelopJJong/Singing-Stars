@@ -34,6 +34,26 @@ public class PracticeController {
         return "/practice";
     }
 
+    @GetMapping("/view")
+    public String view(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByView("practice", page);
+        model.addAttribute("questionList", questionList);
+        return "/practice";
+    }
+
+    @GetMapping("/vote")
+    public String voter(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByVote("practice", page);
+        model.addAttribute("questionList", questionList);
+        return "/practice";
+    }
+    @GetMapping("/comments")
+    public String comments(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Question> questionList = questionService.findByTypeOrderByComments("practice", page);
+        model.addAttribute("questionList", questionList);
+        return "/practice";
+    }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String create(QuestionForm questionForm){

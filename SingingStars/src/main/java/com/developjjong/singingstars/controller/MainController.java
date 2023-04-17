@@ -68,4 +68,10 @@ public class MainController {
         this.questionService.create(q.getType(), questionForm.getSubject(), questionForm.getContent(), siteUser);
         return "redirect:/list";
     }
+
+    @GetMapping("/search")
+    public String search(String search){
+
+        return "search";
+    }
 }

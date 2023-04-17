@@ -32,6 +32,8 @@ public class Question {
     @Column(nullable = false)
     private String type;
 
+    private String titleHead;
+
     @Column(columnDefinition = "integer default 0", nullable = false)
     private int view;
 

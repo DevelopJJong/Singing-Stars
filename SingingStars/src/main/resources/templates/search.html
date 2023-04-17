@@ -1,0 +1,70 @@
+<html layout:decorate="~{layout}">
+
+<div layout:fragment="content" class="container">
+  <div class="border-bottom my-3 py-2" style="border-bottom: #1a1e21">
+    <h2 class="fw-bold text-center">검색</h2>
+  </div>
+  <div class="dropdown my-1 " style="text-align: right">
+    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      정렬
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="/singup/view">조회순</a>
+      <a class="dropdown-item" href="/singup/list">최신순</a>
+      <a class="dropdown-item" href="/singup/vote">좋아요순</a>
+      <a class="dropdown-item" href="/singup/comments">댓글순</a>
+    </div>
+  </div>
+  <table class="table table-hover table-bordered">
+    <thead class="table" style="background-color: #1C2143;">
+    <tr class="text-center text-white">
+      <th style="width:50%">제목</th>
+      <th>작성자</th>
+      <th>조회수</th>
+      <th>작성일자</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question, loop : ${questionList}">
+      <td><a class="text-black fw-bold"  th:href="@{|/detail/${question.id}|}" style="text-decoration: none; " th:text="${question.title}"></a>
+        <span class="text-danger small ms-2 "
+              th:if="${#lists.size(question.commentList) > 0}"
+              th:text="|댓글 ${#lists.size(question.commentList)}|">
+                    </span>
+        <span class="text-danger small ms-2"
+              th:if="${#lists.size(question.voter) > 0}"
+              th:text="|좋아요 ${#lists.size(question.voter)}|">
+                    </span>
+      </td>
+      <td class="text-center align-middle" th:text="${question.nickname}"></td>
+      <td class="text-center align-middle" th:text="${question.view}"></td>
+      <td class="text-center align-middle" th:text="${#temporals.format(question.created, 'yyyy.MM.dd.')}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- 페이징처리 시작 -->
+  <div th:if="${!questionList.isEmpty()}">
+    <ul class="pagination pagination-sm justify-content-center pagination-rounded">
+      <li class="page-item" th:classappend="${!questionList.hasPrevious} ? 'invisible'">
+        <a class="page-link"
+           th:href="@{|?page=${questionList.number-1}|}">
+          <span>&lt;</span>
+        </a>
+      </li>
+      <li th:each="page: ${#numbers.sequence(0, questionList.totalPages-1)}"
+          th:if="${page >= questionList.number-5 and page <= questionList.number+5}"
+          th:classappend="${page == questionList.number} ? 'active'"
+          class="page-item">
+        <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+      </li>
+      <li class="page-item" th:classappend="${!questionList.hasNext} ? 'invisible'">
+        <a class="page-link" th:href="@{|?page=${questionList.number+1}|}">
+          <span>&gt;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- 페이징처리 끝 -->
+</div>
+</html>

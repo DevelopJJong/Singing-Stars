@@ -24,7 +24,6 @@ import java.security.Principal;
 @RequestMapping("/duet")
 @Controller
 public class DuetController {
-
     private final QuestionService questionService;
     private final UserService userService;
 

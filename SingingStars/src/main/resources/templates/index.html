@@ -1,6 +1,82 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container">
-
+    <header class="text-center align-items-center text-white masthead" style="background: url('/assets/images/song.jpg')no-repeat center center;background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 mx-auto position-relative">
+                    <h1 class="fw-bold" style="margin-bottom: 10rem; margin-top: 10rem;">당신의 노래를 들려주세요</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="my-3 mb-3 py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 rounded-1" style="background-color: #1C2143; border:1px solid white">
+                    <div class="border-bottom mb-3 my-2"><h3 class="text-center text-white fw-bold">실시간 조회수 순위</h3></div>
+                    <ol>
+                    <li class="text-white" th:each="list, loop : ${list}"><a class="text-white" style="text-decoration: none; " th:href="@{|/detail/${list.id}|}" th:text="${list.title}"></a></li>
+                    </ol>
+                </div>
+                <div class="col-lg-4 rounded-1" style="background-color: #1C2143; border:1px solid white">
+                    <div class="border-bottom mb-3 my-2"><h3 class="text-center text-white fw-bold">실시간 추천 순위</h3></div>
+                    <ol>
+                        <li class="text-white" th:each="list2, loop : ${list2}"><a class="text-white" style="text-decoration: none; " th:href="@{|/detail/${list2.id}|}" th:text="${list2.title}"></a></li>
+                    </ol>
+                </div>
+                <div class="col-lg-4 rounded-1 text-white" style="background-color: #1C2143; border:1px solid white">
+                    <div class="border-bottom mb-3 my-2"><h3 class="text-center text-white fw-bold">실시간 댓글 순위</h3></div>
+                    <ol>
+                        <li class="text-white" th:each="list3, loop : ${list3}"><a class="text-white" style="text-decoration: none; " th:href="@{|/detail/${list3.id}|}" th:text="${list3.title}"></a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--    <section class="my-3 mb-3 py-5">-->
+<!--        <div class="container">-->
+<!--            <div class="row mb-5">-->
+<!--                <div class="col-md-8 col-xl-6 text-center mx-auto">-->
+<!--                    <h2 class="fw-bold"><strong>사용자 후기 모음</strong></h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">-->
+<!--                <div class="col mb-4">-->
+<!--                    <div class="d-flex flex-column align-items-center align-items-sm-start">-->
+<!--                        <p class="bg-light border rounded border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>-->
+<!--                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="team/avatar2.jpg" />-->
+<!--                            <div>-->
+<!--                                <p class="fw-bold text-primary mb-0">John Smith</p>-->
+<!--                                <p class="text-muted mb-0">Erat netus</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col mb-4">-->
+<!--                    <div class="d-flex flex-column align-items-center align-items-sm-start">-->
+<!--                        <p class="bg-light border rounded border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>-->
+<!--                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="team/avatar4.jpg" />-->
+<!--                            <div>-->
+<!--                                <p class="fw-bold text-primary mb-0">John Smith</p>-->
+<!--                                <p class="text-muted mb-0">Erat netus</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col mb-4">-->
+<!--                    <div class="d-flex flex-column align-items-center align-items-sm-start">-->
+<!--                        <p class="bg-light border rounded border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>-->
+<!--                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="team/avatar5.jpg" />-->
+<!--                            <div>-->
+<!--                                <p class="fw-bold text-primary mb-0">John Smith</p>-->
+<!--                                <p class="text-muted mb-0">Erat netus</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
 </div>
 </html>

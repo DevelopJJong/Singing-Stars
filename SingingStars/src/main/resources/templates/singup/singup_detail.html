@@ -1,4 +1,7 @@
 <html layout:decorate="~{layout}">
+<style>
+
+</style>
 <div layout:fragment="content" class="container mt-5">
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
@@ -14,8 +17,10 @@
                 <a><small class="text-muted" th:text="|좋아요 ${#lists.size(question.voter)}|"></small></a>
             </p>
         </div>
+                <div th:if="${question.video != null}">
+                    <div class="border-top my-3 py-2 row-cols-3 video"   th:utext="${question.video}"></div>
+                </div>
                 <div class="border-top my-3 py-2 row-cols-3 text-break"  th:text="${question.content}"></div>
-
         </div>
         </div>
 

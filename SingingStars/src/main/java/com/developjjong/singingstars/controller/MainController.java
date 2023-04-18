@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigInteger;
 import java.security.Principal;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -29,7 +30,13 @@ public class MainController {
     private final UserService userService;
 
     @GetMapping("/")
-    String root(){
+    String root(Model model){
+        List<Question> list = questionService.getViewList().subList(0,5);
+        List<Question> list2 = questionService.getVoterList().subList(0,5);
+        List<Question> list3 = questionService.getCommentsList().subList(0,5);
+        model.addAttribute("list", list);
+        model.addAttribute("list2", list2);
+        model.addAttribute("list3", list3);
         return "index";
     }
 

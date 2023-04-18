@@ -7,14 +7,20 @@
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div class="mb-3">
             <label for="subject" class="form-label">제목</label>
-            <input type="text" name="subject" id="subject" th:value="*{subject}" class="form-control">
+            <input type="text" name="subject" id="subject" th:value="*{subject}" placeholder="제목을 입력해주세요" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="video" class="form-label">유튜브 링크</label>
+            <textarea name="video" id="video" class="form-control" th:field="*{video}" rows="5" placeholder="유튜브링크를 입력해주세요"></textarea>
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">내용</label>
-            <pre><code>코드입력</code></pre>
-            <textarea name="content" id="content" th:field="*{content}" class="form-control" rows="10"></textarea>
+            <textarea name="content" id="content" th:field="*{content}" class="form-control" rows="10" placeholder="내용을 입력해주세요"></textarea>
         </div>
-        <input style = "text-align: right" type="submit" value="글쓰기" class="btn btn-outline-dar">
+        <div style = "text-align: right">
+<!--            <button type="submit" value="글쓰기" class="btn btn-outline-dark"></button>-->
+            <input type="submit" value="글쓰기" class="btn btn-outline-dark">
+        </div>
     </form>
 </div>
 </html>

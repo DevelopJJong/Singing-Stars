@@ -96,7 +96,7 @@ public class SingUpController {
         if (!question.getSiteUser().getEmail().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
-        this.questionService.update(question, questionForm.getSubject(), questionForm.getContent());
+        this.questionService.videoUpdate(question, questionForm.getSubject(), questionForm.getContent(), questionForm.getVideo());
         return String.format("redirect:/detail/%s", id);
     }
 
@@ -116,7 +116,7 @@ public class SingUpController {
         SiteUser siteUser = this.userService.getUser(principal.getName());
         Question q = new Question();
         q.setType("singup");
-        this.questionService.create(q.getType(), questionForm.getSubject(), questionForm.getContent(), siteUser);
+        this.questionService.videoCreate(q.getType(), questionForm.getSubject(), questionForm.getContent(), siteUser, questionForm.getVideo());
     return "redirect:/singup/list";
     }
 

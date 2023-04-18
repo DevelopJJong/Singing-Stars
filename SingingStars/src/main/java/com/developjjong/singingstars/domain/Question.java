@@ -23,6 +23,9 @@ public class Question {
     @Column(length=500)
     private String content;
 
+    @Column(length=20000)
+    private String video;
+
     @Column(nullable = false)
     private LocalDateTime created;
 

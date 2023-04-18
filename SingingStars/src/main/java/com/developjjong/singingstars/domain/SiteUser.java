@@ -2,6 +2,7 @@ package com.developjjong.singingstars.domain;
 
 import com.developjjong.singingstars.type.UserRole;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,4 +37,17 @@ public class SiteUser {
     private String provider;
 
     private String providerId;
+
+    @Builder
+    public SiteUser(String nickname, String email, UserRole role){
+        this.nickname = nickname;
+        this.email = email;
+        this.userRole = role;
+    }
+
+    public SiteUser update(String nickname){
+        this.nickname = nickname;
+
+        return this;
+    }
 }

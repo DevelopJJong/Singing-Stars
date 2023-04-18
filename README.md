@@ -1,6 +1,6 @@
 # Singing-Stars (작성중)
 #### 프로젝트 일정 : 2023.04.01 ~
-#### 프로젝트 인원 : DevelopJJong 개인프로젝트
+#### 프로젝트 인원 : DevelopJJong의 개인프로젝트
 
 ## INTRODUCE
 ### 너의 노래실력을 들려줘!

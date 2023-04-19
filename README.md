@@ -2,7 +2,7 @@
 #### 프로젝트 일정 : 2023.04.01 ~
 #### 프로젝트 인원 : DevelopJJong의 개인프로젝트
 
-## INTRODUCE
+## 🎀 INTRODUCE
 ### 너의 노래실력을 들려줘!
 
 사람들의 노래를 듣고 좋아요를 눌러 당신의 마음을 표현해 보세요
@@ -20,23 +20,23 @@
 * 마이페이지에서 회원정보 수정가능
 
 
-## SKILLS
+## 💻 SKILLS
 
 * **Frontend** : HTML, CSS, JS, Thymeleaf, Bootstrap 
 * **Backend** : Spring Boot, Spring Security, Spring JPA
 * **DataBase** : H2
 * **Deployment** : AWS
 
-## VIEW
+## 📷 VIEW
 추가예정
 
-## DEPLOYMENTS
+## 💾 DEPLOYMENTS
 추가예정
 
-## TO BE UPDATED
+## 💡 TO BE UPDATED
 - [ ] 조회수 중복 방지 (쿠키 이용)
 - [ ] 어드민 페이지
 - [ ] sns 로그인 (OAuth2사용해서 구현예정)
 
-## REVIEW THIS PROJECT
+## 📃 REVIEW THIS PROJECT
 

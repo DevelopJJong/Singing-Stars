@@ -53,6 +53,12 @@ public class UserService {
         return userRepository.save(siteUser);
     }
 
+    public SiteUser update(SiteUser siteUser, String password){
+        siteUser.setPassword(passwordEncoder.encode(password));
+        return userRepository.save(siteUser);
+    }
+
+
     public SiteUser getUser(String email){
         Optional<SiteUser> user = userRepository.findByEmail(email);
         if (user.isPresent()){

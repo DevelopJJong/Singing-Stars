@@ -1,0 +1,33 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Alkalami.css">
+    <link rel="stylesheet" href="/assets/css/Archivo%20Black.css">
+    <link rel="stylesheet" href="/assets/css/Bebas%20Neue.css">
+    <link rel="stylesheet" href="/assets/css/Blinker.css">
+    <link rel="stylesheet" href="/assets/css/Open%20Sans.css">
+    <link rel="stylesheet" href="/assets/css/Articles-Badges-images.css">
+    <link rel="stylesheet" href="/assets/css/Navbar-Centered-Brand-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<nav th:replace="~{navbar :: navbarFragment}"></nav>
+<div class="text-center my-5" style="vertical-align: middle;" layout:fragment="content">
+<form th:action="@{/user/mypage}" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <h1 th:text="${user.nickname}"></h1>
+    <label for="nowPassword">현재 비밀번호:</label>
+    <input type="password" id="nowPassword" name="nowPassword"/><br/>
+    <label for="newPassword">새로운 비밀번호:</label>
+    <input type="password" id="newPassword" name="newPassword"/><br/>
+    <button type="submit" class="login__button" id="signupBtn">비밀번호 변경</button>
+</form>
+</div>
+<footer th:replace="~{footer :: footerFragment}"></footer>
+
+</html>

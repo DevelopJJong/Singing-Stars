@@ -40,27 +40,27 @@ public class SingUpController {
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Question> questionList = questionService.findByType("singup", page);
         model.addAttribute("questionList", questionList);
-        return "/singup/singup_list";
+        return "singup/singup_list";
     }
 
     @GetMapping("/view")
     public String view(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Question> questionList = questionService.findByTypeOrderByView("singup", page);
         model.addAttribute("questionList", questionList);
-        return "/singup/singup_list";
+        return "singup/singup_list";
     }
 
     @GetMapping("/vote")
     public String voter(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Question> questionList = questionService.findByTypeOrderByVote("singup", page);
         model.addAttribute("questionList", questionList);
-        return "/singup/singup_list";
+        return "singup/singup_list";
     }
     @GetMapping("/comments")
     public String comments(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Question> questionList = questionService.findByTypeOrderByComments("singup", page);
         model.addAttribute("questionList", questionList);
-        return "/singup/singup_list";
+        return "singup/singup_list";
     }
 
 
@@ -69,7 +69,7 @@ public class SingUpController {
         questionService.viewCount(id);
         model.addAttribute("question",questionService.detail(id));
 
-        return "/singup/singup_detail";
+        return "singup/singup_detail";
     }
 
 

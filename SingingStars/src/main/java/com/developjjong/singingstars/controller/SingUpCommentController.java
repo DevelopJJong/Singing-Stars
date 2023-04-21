@@ -37,7 +37,7 @@ public class SingUpCommentController {
         Question question = this.questionService.getQuestion(id);
         if (bindingResult.hasErrors()) {
             model.addAttribute("question", question);
-            return "/singup/singup_detail";
+            return "singup/singup_detail";
         }
         SiteUser siteUser = this.userService.getUser(principal.getName());
         this.commentService.create(question, commentForm.getContent(), siteUser);

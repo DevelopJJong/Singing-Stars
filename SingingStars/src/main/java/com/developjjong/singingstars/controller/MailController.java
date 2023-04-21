@@ -17,7 +17,7 @@ public class MailController {
 
     @GetMapping("/send")
     public String MailPage(){
-        return "/author/mail";
+        return "author/mail";
     }
 
     @ResponseBody

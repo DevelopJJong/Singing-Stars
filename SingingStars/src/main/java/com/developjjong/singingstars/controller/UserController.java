@@ -33,13 +33,13 @@ public class UserController {
 
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
-        return "/author/signup";
+        return "author/signup";
     }
 
     @PostMapping("/signup")
     public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/author/signup";
+            return "author/signup";
         }
 
         if (!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
@@ -54,11 +54,11 @@ public class UserController {
         }catch(DataIntegrityViolationException e) {
             e.printStackTrace();
             bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
-            return "/author/signup";
+            return "author/signup";
         }catch(Exception e) {
             e.printStackTrace();
             bindingResult.reject("signupFailed", e.getMessage());
-            return "/author/signup";
+            return "author/signup";
         }
 
         return "redirect:/";
@@ -86,7 +86,7 @@ public class UserController {
         SiteUser siteUser = userService.getUser(userEmail);
 
         model.addAttribute("user", siteUser);
-        return "/author/mypage";
+        return "author/mypage";
     }
 
     @PostMapping("/mypage")
@@ -111,7 +111,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
-        return "/author/login";
+        return "author/login";
     }
 
 }

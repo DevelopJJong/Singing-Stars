@@ -44,7 +44,7 @@ public class MainController {
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Question> questionList = questionService.findByType("announce", page);
         model.addAttribute("questionList", questionList);
-        return "/announce";
+        return "announce";
     }
 
     @GetMapping("/detail/{id}")
@@ -52,7 +52,7 @@ public class MainController {
         questionService.viewCount(id);
         model.addAttribute("question",questionService.detail(id));
 
-        return "/singup/singup_detail";
+        return "singup/singup_detail";
     }
 
     @PreAuthorize("hasRole('ADMIN')")

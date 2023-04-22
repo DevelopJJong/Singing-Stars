@@ -31,14 +31,15 @@ public class MainController {
 
     @GetMapping("/")
     String root(Model model){
-        List<Question> list = questionService.getViewList().subList(0,5);
-        List<Question> list2 = questionService.getVoterList().subList(0,5);
-        List<Question> list3 = questionService.getCommentsList().subList(0,5);
+        List<Question> list = questionService.getViewList();
+        List<Question> list2 = questionService.getVoterList();
+        List<Question> list3 = questionService.getCommentsList();
         model.addAttribute("list", list);
         model.addAttribute("list2", list2);
         model.addAttribute("list3", list3);
         return "index";
     }
+
 
     @GetMapping("/list")
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
@@ -77,8 +78,13 @@ public class MainController {
     }
 
     @GetMapping("/search")
-    public String search(String search){
+    public String search(Model model, String search, @RequestParam(value="page", defaultValue="0") int page){
 
-        return "search";
+        Page<Question> questionList = questionService.search(search, page);
+        if(search != null) {
+            model.addAttribute("questionList", questionList);
+            return "search";
+        }else
+            return "redirect:/";
     }
 }

@@ -7,7 +7,10 @@
     </style>
     <div class="container-fluid" style="margin-left: 10px; margin-right: 10px;">
         <a class="navbar-brand" href="/"><img src="/assets/images/SingingStarBrand.svg" alt = "brand"></a>
-
+        <form class="d-flex" th:action="@{/search}" method="get">
+            <input class="form-control me-2" name="search" id="search" type="search" placeholder="검색어를 입력해주세요." aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
         <div id="navcol-2" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto text-uppercase">
                 <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="/list">공지사항</a></li>

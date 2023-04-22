@@ -33,6 +33,12 @@ public class QuestionService {
         }
     }
 
+    public Page<Question> search(String title, int page){
+        Pageable pageable = PageRequest.of(page, 10);
+
+        return questionRepository.findByTitleContainingIgnoreCase(title, pageable);
+    }
+
 
 
     public List<Question> getList(){
@@ -40,13 +46,13 @@ public class QuestionService {
     }
 
     public List<Question> getViewList(){
-        return questionRepository.findAllByOrderByViewDesc();
+        return questionRepository.findFirst5ByOrderByViewDesc();
     }
     public List<Question> getVoterList(){
-        return questionRepository.findAllByOrderByVoterDesc();
+        return questionRepository.findFirst5ByOrderByVoterDesc();
     }
     public List<Question> getCommentsList(){
-        return questionRepository.findAllByOrderByCommentListDesc();
+        return questionRepository.findFirst5ByOrderByCommentListDesc();
     }
 
     public Question detail(BigInteger id){

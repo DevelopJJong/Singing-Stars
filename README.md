@@ -58,6 +58,22 @@
 </div>
 </details>
 
+### 루트페이지
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815844-b61647c5-272e-4937-8b81-2f2e7ea873c3.jpg">
+</div>
+</details>
+
+### 마이페이지
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815977-448ccb38-3708-4f43-ac51-47496714ed95.jpg">
+</div>
+</details>
+
 ### 공지사항
 <details>
 <summary>보기</summary>
@@ -107,6 +123,8 @@
 <summary>보기</summary>
 <div markdown="1">
 <img src = "https://user-images.githubusercontent.com/101362306/233815123-8308c3de-7ea8-416d-a6ca-c9e13e6dda2b.jpg">
+<img src = "https://user-images.githubusercontent.com/101362306/233815906-6885f37f-c817-4b18-9652-954a81596423.jpg">
+<img src = "https://user-images.githubusercontent.com/101362306/233815926-eecd811a-ad00-4347-b658-775332ee6fee.jpg">
 </div>
 </details>
 
@@ -131,3 +149,4 @@
 
 ## 📃 REVIEW THIS PROJECT
 
+[리뷰 보기](https://jjdevelop.tistory.com/53)

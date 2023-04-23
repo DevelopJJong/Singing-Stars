@@ -1,11 +1,15 @@
-# Singing-Stars (작성중)
+# Singing-Stars
 #### 프로젝트 일정 : 2023.04.01 ~
 #### 프로젝트 인원 : DevelopJJong의 개인프로젝트
+#### 사이트 주소 : SingingStar(#)
 
 ## 🎀 INTRODUCE
 ### 너의 노래실력을 들려줘!
 
-사람들의 노래를 듣고 좋아요를 눌러 당신의 마음을 표현해 보세요
+누군가가 당신의 노래를 들어주면 좋겠다고 생각이 드나요?
+당신과 같이 노래 불러 줄 사람을 찾으시나요?
+노래를 연습하고 싶은데 어떻게 연습해야 할지 모르시나요?
+사람들의 노래를 듣고 좋아요를 눌러 당신의 마음을 표현해 보세요.
 
 
 ## 📌 FEATURES
@@ -25,10 +29,97 @@
 * **Frontend** : HTML, CSS, JS, Thymeleaf, Bootstrap 
 * **Backend** : Spring Boot, Spring Security, Spring JPA
 * **DataBase** : H2
-* **Deployment** : AWS
+* **Deployment** : AWS EC2
 
 ## 📷 VIEW
-추가예정
+### 로그인
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815017-01871b32-90ca-4802-a827-240e41557d83.jpg">
+</div>
+</details>
+
+
+### 비밀번호 찾기
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815064-fa2440b6-e452-4348-bdeb-33b0e6413bda.jpg">
+
+</div>
+</details>
+
+### 회원가입
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815203-2db93064-de3c-4bfa-b9cd-fee74e35725e.jpg">
+</div>
+</details>
+
+### 공지사항
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815196-7794b6de-262f-4100-b804-ef131acdb8ee.jpg">
+</div>
+</details>
+
+### 노래
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815189-3164ac17-bd9d-4765-99ec-4d7732a4f8c3.jpg">
+
+</div>
+</details>
+
+### 듀엣 찾기
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815174-7e971662-f3ae-4c9c-add8-3d8460c4f5d8.jpg">
+</div>
+</details>
+
+
+### 연습 TIP
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815165-60a78daa-22f2-4eda-ba4c-6bed7f190009.jpg">
+</div>
+</details>
+
+
+### 글쓰기
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815138-f3e02b20-60a5-4a20-ad90-1dd92a830d8b.jpg">
+</div>
+</details>
+
+
+### 글
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815123-8308c3de-7ea8-416d-a6ca-c9e13e6dda2b.jpg">
+</div>
+</details>
+
+
+### 검색
+<details>
+<summary>보기</summary>
+<div markdown="1">
+<img src = "https://user-images.githubusercontent.com/101362306/233815107-f1d8f049-3172-4238-b62b-3fcaadac727b.jpg">
+</div>
+</details>
+
+
 
 ## 💾 DEPLOYMENTS
 추가예정

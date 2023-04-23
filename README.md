@@ -1,7 +1,7 @@
 # Singing-Stars
 #### 프로젝트 일정 : 2023.04.01 ~ 2023.04.23 (Version 0.1)
 #### 프로젝트 인원 : DevelopJJong의 개인프로젝트
-#### 사이트 주소 : SingingStar(#)
+#### 사이트 주소 : [SingingStar](http://singingstar.duckdns.org)
 
 ## 🎀 INTRODUCE
 ### 너의 노래실력을 들려줘!

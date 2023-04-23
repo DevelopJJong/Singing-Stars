@@ -90,7 +90,6 @@
 <summary>보기</summary>
 <div markdown="1">
 <img src = "https://user-images.githubusercontent.com/101362306/233815189-3164ac17-bd9d-4765-99ec-4d7732a4f8c3.jpg">
-
 </div>
 </details>
 
@@ -121,7 +120,7 @@
 </details>
 
 
-### 
+### 게시물
 <details>
 <summary>보기</summary>
 <div markdown="1">

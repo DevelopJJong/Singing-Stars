@@ -142,7 +142,7 @@
 
 
 ## 💾 DEPLOYMENTS
-추가예정
+추가예정.
 
 ## 💡 TO BE UPDATED
 - [ ] 조회수 중복 방지 (쿠키 이용)

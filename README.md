@@ -141,14 +141,10 @@
 
 
 
-## 💾 DEPLOYMENTS
-추가예정.
-
 ## 💡 TO BE UPDATED
 - [ ] 조회수 중복 방지 (쿠키 이용)
 - [ ] 어드민 페이지
 - [ ] sns 로그인 (OAuth2사용해서 구현예정)
 
 ## 📃 REVIEW THIS PROJECT
-계속 작성중
 [리뷰 보기](https://jjdevelop.tistory.com/53)
